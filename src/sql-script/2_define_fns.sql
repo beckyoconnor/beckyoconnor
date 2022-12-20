@@ -25,6 +25,8 @@ PUT file://./src/python/pneumonia_image_inference.py @lib_stg/scripts
     auto_compress = false
     overwrite = true;
 
+-- # As models are created only after training, we cannot pre-define this
+-- # stored procedure, as it needs to import the trained model file
 -- create or replace procedure infer_pneumonia(IMAGE_ARRAY_SHAPE_0 integer ,IMAGE_ARRAY_SHAPE_1 integer ,RESIZED_FEATURE varchar)
 --     returns variant
 --     language python

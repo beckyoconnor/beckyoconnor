@@ -60,8 +60,6 @@ def define_inference_stored_proc():
     print(sql_stmt)
     sp_session.sql(sql_stmt).collect()
 
-
-
 def infer_sample_rows(p_row_count: int):
     st.write('Infering pneumonia ...')
 
