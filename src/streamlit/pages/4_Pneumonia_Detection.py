@@ -57,7 +57,6 @@ def define_inference_stored_proc():
      handler = 'pneumonia_image_inference.main'
     ;
     '''
-    print(sql_stmt)
     sp_session.sql(sql_stmt).collect()
 
 def infer_sample_rows(p_row_count: int):
