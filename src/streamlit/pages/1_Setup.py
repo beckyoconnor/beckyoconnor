@@ -23,17 +23,48 @@ st.write("""
     such activities like creating database, stored procs, roles ,stage etc..
 """)
 
-# Initialize a session with Snowflake
-# sp_session = None
-# if "snowpark_session" not in st.session_state:
-#     sp_session = L.connect_to_snowflake(PROJECT_HOME_DIR)
-#     st.session_state['snowpark_session'] = sp_session
-# else:
-#     sp_session = st.session_state['snowpark_session']
+config = None
+sp_session = None
+if "snowpark_session" not in st.session_state:
+    config = L.get_config(PROJECT_HOME_DIR)
+    sp_session = L.connect_to_snowflake(PROJECT_HOME_DIR)
+    sp_session.use_role(f'''{config['APP_DB']['role']}''')
+    sp_session.use_schema(f'''{config['APP_DB']['database']}.{config['APP_DB']['schema']}''')
+    sp_session.use_warehouse(f'''{config['APP_DB']['snow_opt_wh']}''')
+    st.session_state['snowpark_session'] = sp_session
+else:
+    sp_session = st.session_state['snowpark_session']
 
 #-----------------------------------------------------
 # Run the Setup scripts
+import os
 
+def upload_images_to_data_stage():
+    logger.info(f" Uploading images to stage: data_stg ... ")
+    l_stage = 'data_stg'
+    l_stage_dir = '/images'
+    l_data_dir = os.path.join(PROJECT_HOME_DIR ,'data')
+    for path, currentDirectory, files in os.walk(l_data_dir):
+        for file in files:
+            # build the relative paths to the file
+            local_file = os.path.join(path, file)
+
+            if local_file.endswith('jpeg') == False:
+                continue
+        
+            elif '/.' in local_file:
+                continue
+            
+            # build the path to where the file will be staged
+            stage_dir = path.replace(l_data_dir , l_stage_dir)
+
+            print(f'    {local_file} => @{l_stage}/{stage_dir}')
+            sp_session.file.put(
+                local_file_name = local_file
+                ,stage_location = f'{l_stage}{stage_dir}'
+                ,auto_compress=False ,overwrite=True)
+    
+    sp_session.sql(f'alter stage {l_stage} refresh; ').collect()
 
 with st.expander("Step 1- Setup database and schemas"):
     script_output = st.empty()
@@ -48,4 +79,11 @@ with st.expander("Step 2- Define functions and procedures" , False):
         st.button('Define functions and procedures'
             ,on_click=exec_sql_script
             ,args = ('./src/sql-script/2_define_fns.sql' ,script_output_2)
+        )
+
+with st.expander("Step 3- Upload sample images to stage" , False):
+    script_output_2 = st.empty()
+    with script_output_2.container():
+        st.button('Upload'
+            ,on_click=upload_images_to_data_stage
         )

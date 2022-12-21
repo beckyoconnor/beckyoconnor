@@ -50,6 +50,7 @@ create or replace stage lib_stg
     comment = 'used for holding libraries and other core artifacts.';
 
 create or replace stage data_stg
+    directory = ( enable = true )
     comment = 'used for holding data.';
 
 create or replace stage model_stg

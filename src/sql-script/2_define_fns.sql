@@ -4,6 +4,19 @@ use role public;
 use warehouse DEMO_BUILD_WH;
 use schema &APP_DB_database.public;
 
+-- =========================
+PUT file://./src/python/skimage_parser_fn.py @lib_stg/scripts 
+    auto_compress = false
+    overwrite = true;
+
+create or replace function skimage_parser_fn(image_fl varchar)
+     returns variant
+     language python
+     runtime_version = '3.8'
+     packages = ('snowflake-snowpark-python','numpy', 'pandas', 'scikit-learn' ,'scikit-image')
+     imports = ('@lib_stg/scripts/skimage_parser_fn.py')
+     handler = 'skimage_parser_fn.main'
+     ;
 
 -- =========================
 PUT file://./src/python/pneumonia_image_trainer.py @lib_stg/scripts 
