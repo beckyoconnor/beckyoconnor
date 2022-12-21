@@ -38,6 +38,23 @@ else:
 #-----------------------------------------------------
 # Run the Setup scripts
 import os
+import tarfile
+
+# def package_images_into_archive:
+# #declaring the filename
+# name_of_file= "TutorialsPoint.tar"
+
+# #opening the file in write mode
+# file= tarfile.open(name_of_file,"w")
+
+# #Adding other files to the tar file
+# file.add("sql python create table.docx")
+# file.add("trial.py")
+# file.add("Programs.txt")
+
+# #closing the file
+# file.close()   
+
 
 def upload_images_to_data_stage():
     logger.info(f" Uploading images to stage: data_stg ... ")

@@ -44,10 +44,14 @@ def parse_img_fl_to_array(p_img_fl):
 def main(p_image_fl: str):
     l_images_parsed = {}
     
-    status ,ex ,image_arr = parse_img_fl_to_array(p_image_fl)
-    arr_shape = np.shape(image_arr)
-    normalized_arr = np.array(image_arr) / 255
-    resized_feature = normalized_arr.reshape(-1, IMG_SIZE, IMG_SIZE, 1)
+    try:
+        status ,ex ,image_arr = parse_img_fl_to_array(p_image_fl)
+        arr_shape = np.shape(image_arr)
+        normalized_arr = np.array(image_arr) / 255
+        resized_feature = normalized_arr.reshape(-1, IMG_SIZE, IMG_SIZE, 1)
+
+    except Exception as e:
+        ex = str(e)
 
     l_images_parsed['image_filepath'] = p_image_fl
     l_images_parsed['parsing_status'] = status
