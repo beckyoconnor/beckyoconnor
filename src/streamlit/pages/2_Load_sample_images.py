@@ -23,6 +23,7 @@ st.write("""
 """)
 
 # Initialize a session with Snowflake
+config = None
 sp_session = None
 if "snowpark_session" not in st.session_state:
     config = L.get_config(PROJECT_HOME_DIR)
