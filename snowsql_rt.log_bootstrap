@@ -1,0 +1,44 @@
+2023-02-06 18:38:39,161 (35363/MainThread) snowflake.cli.common.util_cli DEBUG       util_cli:686  - Initialized logging. Log file '../snowsql_rt.log_bootstrap', Namespaces: ['snowflake.cli', 'snowflake.connector', 'botocore', 'azure', '__main__', 'eventloop', 'sqlexecute']
+2023-02-06 18:38:39,162 (35363/MainThread) snowflake.cli.common.util_cli DEBUG       util_cli:705  - cacert?: /tmp/_MEI3WWGgB/base_library.zip/cacert.pem, /tmp/_MEI3WWGgB/base_library.zip/certifi/cacert.pem
+2023-02-06 18:38:39,162 (35363/MainThread) snowflake.cli.common.util_cli DEBUG       util_cli:705  - cacert?: /tmp/_MEI3WWGgB/lib-dynload/cacert.pem, /tmp/_MEI3WWGgB/lib-dynload/certifi/cacert.pem
+2023-02-06 18:38:39,162 (35363/MainThread) snowflake.cli.common.util_cli DEBUG       util_cli:705  - cacert?: /tmp/_MEI3WWGgB/cacert.pem, /tmp/_MEI3WWGgB/certifi/cacert.pem
+2023-02-06 18:38:39,162 (35363/MainThread) snowflake.cli.common.util_cli INFO       util_cli:714  - cacert.pem is set to REQUESTS_CA_BUNDLE: /tmp/_MEI3WWGgB/certifi/cacert.pem
+2023-02-06 18:38:39,163 (35363/MainThread) __main__ DEBUG      bootstrap:348  - proxy_host:None, proxy_port: None, proxy_user: None, proxy_password:False
+2023-02-06 18:38:39,163 (35363/MainThread) __main__ INFO      bootstrap:350  - no autoupgrade option: False
+2023-02-06 18:38:39,163 (35363/MainThread) __main__ INFO      bootstrap:352  - version: None, ret_options: None
+2023-02-06 18:38:39,166 (35363/MainThread) __main__ DEBUG      bootstrap:751  - No deletion happened. The number of snowsql is still less than 5
+2023-02-06 18:38:39,168 (35363/MainThread) __main__ DEBUG      bootstrap:365  - can we upgrade?: True
+2023-02-06 18:38:39,168 (35363/MainThread) __main__ INFO      bootstrap:370  - auto upgrade without version
+2023-02-06 18:38:39,168 (35363/MainThread) __main__ DEBUG      bootstrap:906  - Checking Repository: https://sfc-repo.snowflakecomputing.com/snowsql/1.2/darwin_x86_64/index.json
+2023-02-06 18:38:39,337 (35363/MainThread) __main__ DEBUG      bootstrap:922  - List Objects: [
+    "snowsql-1.2.24-darwin_x86_64.zip",
+    "snowsql-1.2.23-darwin_x86_64.zip",
+    "snowsql-1.2.22-darwin_x86_64.zip",
+    "snowsql-1.2.21-darwin_x86_64.zip",
+    "snowsql-1.2.20-darwin_x86_64.zip",
+    "snowsql-1.2.19-darwin_x86_64.zip",
+    "snowsql-1.2.18-darwin_x86_64.zip",
+    "snowsql-1.2.17-darwin_x86_64.zip",
+    "snowsql-1.2.16-darwin_x86_64.zip",
+    "snowsql-1.2.15-darwin_x86_64.zip",
+    "snowsql-1.2.14-darwin_x86_64.zip",
+    "snowsql-1.2.13-darwin_x86_64.zip",
+    "snowsql-1.2.12-darwin_x86_64.zip",
+    "snowsql-1.2.11-darwin_x86_64.zip",
+    "snowsql-1.2.10-darwin_x86_64.zip",
+    "snowsql-1.2.9-darwin_x86_64.zip",
+    "snowsql-1.2.8-darwin_x86_64.zip",
+    "snowsql-1.2.7-darwin_x86_64.zip",
+    "snowsql-1.2.5-darwin_x86_64.zip",
+    "snowsql-1.2.4-darwin_x86_64.zip",
+    "snowsql-1.2.3-darwin_x86_64.zip",
+    "snowsql-1.2.2-darwin_x86_64.zip",
+    "snowsql-1.2.1-darwin_x86_64.zip",
+    "snowsql-1.2.0-darwin_x86_64.zip"
+]
+2023-02-06 18:38:39,337 (35363/MainThread) __main__ DEBUG      bootstrap:945  - extracting from sfc-repo bucket
+2023-02-06 18:38:39,337 (35363/MainThread) __main__ DEBUG      bootstrap:808  - Available snowsql files: ['1.2/darwin_x86_64/snowsql-1.2.24-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.23-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.22-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.21-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.20-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.19-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.18-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.17-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.16-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.15-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.14-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.13-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.12-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.11-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.10-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.9-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.8-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.7-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.5-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.4-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.3-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.2-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.1-darwin_x86_64.zip', '1.2/darwin_x86_64/snowsql-1.2.0-darwin_x86_64.zip']
+2023-02-06 18:38:39,337 (35363/MainThread) __main__ DEBUG      bootstrap:809  - snowsql file: 1.2/darwin_x86_64/snowsql-1.2.24-darwin_x86_64.zip
+2023-02-06 18:38:39,337 (35363/MainThread) __main__ DEBUG      bootstrap:623  - Latest version: 1.2.24 in remote
+2023-02-06 18:38:39,338 (35363/MainThread) __main__ INFO      bootstrap:247  - Recorded autoupgrade status
+2023-02-06 18:38:39,339 (35363/MainThread) __main__ DEBUG      bootstrap:828  - Running /var/root/.snowsql/1.2.24/snowsql

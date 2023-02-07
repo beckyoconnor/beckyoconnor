@@ -1,8 +1,8 @@
 
 -- The following resources are assumed and pre-existing
 use role public;
-use warehouse DEMO_BUILD_WH;
-use schema &APP_DB_database.public;
+use warehouse snowopt_wh;
+use schema INDSOL_DICOM_DB.public;
 
 -- =========================
 PUT file://./src/python/extract_images_in_stage.py @lib_stg/scripts 

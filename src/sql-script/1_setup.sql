@@ -7,7 +7,7 @@ use warehouse &SNOW_CONN_warehouse;
 -- =========================
 use role accountadmin;
 
-create or replace warehouse &APP_DB_snow_opt_wh with
+create or replace warehouse snowopt_wh with
     WAREHOUSE_TYPE = 'SNOWPARK-OPTIMIZED'
     WAREHOUSE_SIZE = 'MEDIUM'
     AUTO_RESUME = TRUE
@@ -15,7 +15,7 @@ create or replace warehouse &APP_DB_snow_opt_wh with
     COMMENT = 'warehouse created as part of dicom industry solution usecase.'
 ;
     
-grant ALL PRIVILEGES on warehouse &APP_DB_snow_opt_wh 
+grant ALL PRIVILEGES on warehouse snowopt_wh
     to role public;
 
 -- =========================
@@ -24,34 +24,36 @@ grant ALL PRIVILEGES on warehouse &APP_DB_snow_opt_wh
 -- =========================
 use role sysadmin;
 
-create or replace database &APP_DB_database
+create or replace database INDSOL_DICOM_DB
     comment = 'used for demonstrating DICOM image processing demo';
 
 -- Transfer ownership
-grant ownership on database &APP_DB_database
+grant ownership on database INDSOL_DICOM_DB
     to role public;
 
-grant ownership  on schema &APP_DB_database.public
+grant ownership  on schema INDSOL_DICOM_DB.public
     to role public;
 
-grant all privileges  on database &APP_DB_database
+grant all privileges  on database INDSOL_DICOM_DB
     to role public;
 
-grant all privileges  on schema &APP_DB_database.public
+grant all privileges  on schema INDSOL_DICOM_DB.public
     to role public;
     
 -- =========================
 -- Define stages
 -- =========================
 use role public;
-use schema &APP_DB_database.public;
+use schema INDSOL_DICOM_DB.public;
 
 create or replace stage lib_stg
     comment = 'used for holding libraries and other core artifacts.';
 
-create or replace stage data_stg
+create or replace stage data_stg encryption = (type = 'SNOWFLAKE_SSE')
     directory = ( enable = true )
     comment = 'used for holding data.';
+
+drop stage data_stg;
 
 create or replace stage model_stg
     comment = 'used for holding ml models.';

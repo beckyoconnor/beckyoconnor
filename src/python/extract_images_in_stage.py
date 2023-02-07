@@ -19,8 +19,8 @@ def main(p_session: Session ,p_archive_flname: str) -> dict:
 
         with tarfile.open(_snowflake.open(p_archive_flname), 'r|') as input_tar:
             
-tarinfo = input_tar.next()
-fileobj = input_tar.extractfile(tarinfo)
+            tarinfo = input_tar.next()
+            fileobj = input_tar.extractfile(tarinfo)
 
 
 
