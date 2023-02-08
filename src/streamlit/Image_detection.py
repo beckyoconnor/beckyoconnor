@@ -36,7 +36,7 @@ sp_session.use_warehouse(f'''{config['APP_DB']['snow_opt_wh']}''')
 df = sp_session.sql('select current_user() ,current_role() ,current_database() ,current_schema();').to_pandas()
 display(df)
 
-st.write("# Image Recognition On Chest XRays 👋")
+st.write("# Chest XRay Analysis 🩻")
 
 #st.table(df)
 st.subheader('This is an illustration of parsing an image to binary arrays in order to make a an estimation of \
